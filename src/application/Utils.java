@@ -1,4 +1,4 @@
-package solid;
+package application;
 
 public class Utils {
 

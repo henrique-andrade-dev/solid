@@ -1,4 +1,4 @@
-package solid;
+package application;
 
 public enum TamanhoPrato {
 	PEQUENO(3.9), MEDIO(12.9), GRANDE(15.9);

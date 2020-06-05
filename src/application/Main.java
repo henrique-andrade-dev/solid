@@ -1,4 +1,4 @@
-package solid;
+package application;
 
 import java.util.Arrays;
 
@@ -24,7 +24,6 @@ public class Main {
 	}
 
 	static void exibePedidosRealizados(Restaurante restaurante) {
-		System.out.println("--\r\n");
 		System.out.println("Pedidos realizados:");
 
 		for (Pedido pedido : restaurante.retornaPedidosRealizados()) {
@@ -32,12 +31,12 @@ public class Main {
 			System.out.println("  Tamanho do prato: " + pedido.retornaTamanhoPrato());
 			System.out.println("  Adicionais: " + pedido.retornaListaAdicionais());
 			System.out.println("  Retirado: " + pedido.foiRetirado());
-			System.out.println("  Preço total: " + pedido.retornaPrecoTotal());
+			System.out.println("  Preço total: R$ " + pedido.retornaPrecoTotal());
 		}
 	}
 
 	static void exibeBalancoFinal(Restaurante restaurante) {
 		System.out.println("\r\n--");
-		System.out.println("\r\nBalanço final: " + restaurante.retornaBalancoFinal());
+		System.out.println("\r\nBalanço final: R$ " + restaurante.retornaBalancoFinal());
 	}
 }

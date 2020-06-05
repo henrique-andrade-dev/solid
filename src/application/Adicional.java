@@ -1,4 +1,4 @@
-package solid;
+package application;
 
 public enum Adicional {
 	VEGANO(3.9), PORCO(5.9), BOI(7.9),
