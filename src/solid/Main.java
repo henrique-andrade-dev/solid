@@ -7,10 +7,12 @@ public class Main {
 		Adicional[] adicionais = { Adicional.BOI, Adicional.REFRIGERANTE };
 
 		Pedido pedido = new Pedido(TamanhoPrato.MEDIO, Arrays.asList(adicionais));
+		Pedido pedido2 = new Pedido(TamanhoPrato.PEQUENO, Arrays.asList(adicionais));
 
 		Restaurante ichiranRamenShop = new Restaurante();
 
 		ichiranRamenShop.adicionaPedido(pedido);
+		ichiranRamenShop.adicionaPedido(pedido2);
 
 		exibeDadosRestaurante(ichiranRamenShop);
 		// FALTA IMPLEMENTAR CLASSES DE ERRO
@@ -23,10 +25,10 @@ public class Main {
 
 	static void exibePedidosRealizados(Restaurante restaurante) {
 		System.out.println("--\r\n");
-		System.out.println("Pedidos realizados:\r\n");
+		System.out.println("Pedidos realizados:");
 
 		for (Pedido pedido : restaurante.retornaPedidosRealizados()) {
-			System.out.println("  Senha do cliente: " + pedido.retornaSenhaCliente());
+			System.out.println("\r\n  Senha do cliente: " + pedido.retornaSenhaCliente());
 			System.out.println("  Tamanho do prato: " + pedido.retornaTamanhoPrato());
 			System.out.println("  Adicionais: " + pedido.retornaListaAdicionais());
 			System.out.println("  Retirado: " + pedido.foiRetirado());

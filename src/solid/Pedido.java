@@ -3,6 +3,7 @@ package solid;
 import java.util.List;
 
 public class Pedido {
+	private static int count = 0;
 	private int _senhaCliente;
 	private TamanhoPrato _tamanhoPrato;
 	private List<Adicional> _adicionais;
@@ -32,7 +33,7 @@ public class Pedido {
 	}
 
 	private void atribuiSenhaCliente() {
-		this._senhaCliente = this._senhaCliente++;
+		this._senhaCliente = count++;
 	}
 
 	void atribuiTamanhoPrato(TamanhoPrato tamanhoPrato) {
