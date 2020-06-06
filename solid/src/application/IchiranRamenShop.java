@@ -11,7 +11,7 @@ public class IchiranRamenShop implements Restaurante {
 	private IchiranRamenShop() {
 		atribuiPedidosRealizados();
 	}
-	
+
 	public static IchiranRamenShop getInstance() {
 		return INSTANCE;
 	}
