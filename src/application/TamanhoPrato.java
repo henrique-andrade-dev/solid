@@ -9,7 +9,7 @@ public enum TamanhoPrato {
 		_preco = preco;
 	}
 
-	double preco() {
+	public double preco() {
 		return _preco;
 	}
 }

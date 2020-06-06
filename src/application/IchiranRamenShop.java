@@ -2,23 +2,33 @@ package application;
 
 import java.util.ArrayList;
 
+import exceptions.ExcecaoAdicionaPedidoDuplicado;
+
 public class IchiranRamenShop implements Restaurante {
+	private static final IchiranRamenShop INSTANCE = new IchiranRamenShop();
 	private ArrayList<Pedido> _pedidosRealizados;
 
-	public IchiranRamenShop() {
+	private IchiranRamenShop() {
 		atribuiPedidosRealizados();
+	}
+	
+	public static IchiranRamenShop getInstance() {
+		return INSTANCE;
 	}
 
 	public ArrayList<Pedido> retornaPedidosRealizados() {
 		return this._pedidosRealizados;
 	}
-	
+
 	private void atribuiPedidosRealizados() {
 		this._pedidosRealizados = new ArrayList<Pedido>();
 	}
 
-	public void adicionaPedido(Pedido pedido) {
-		this._pedidosRealizados.add(pedido);
+	public void adicionaPedido(Pedido pedido) throws ExcecaoAdicionaPedidoDuplicado {
+		if (!this._pedidosRealizados.contains(pedido))
+			this._pedidosRealizados.add(pedido);
+		else
+			throw new ExcecaoAdicionaPedidoDuplicado();
 	}
 
 	public void removePedido(Pedido pedido) {

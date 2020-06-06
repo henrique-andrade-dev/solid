@@ -13,7 +13,7 @@ public enum Adicional {
 		_preco = preco;
 	}
 
-	double preco() {
+	public double preco() {
 		return _preco;
 	}
 }

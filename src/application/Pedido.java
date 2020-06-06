@@ -2,6 +2,8 @@ package application;
 
 import java.util.ArrayList;
 
+import exceptions.ExcecaoProdutoRetirado;
+
 public class Pedido {
 	private static int count = 0;
 	private int _senhaCliente;
@@ -10,10 +12,16 @@ public class Pedido {
 	private boolean _retirado;
 
 	public Pedido(TamanhoPrato tamanhoPrato, ArrayList<Adicional> adicionais) {
-		atribuiSenhaCliente();
-		atribuiTamanhoPrato(tamanhoPrato);
-		atribuiAdicionais(adicionais);
-		atribuiFlagRetirado();
+		try {
+			atribuiSenhaCliente();
+			atribuiTamanhoPrato(tamanhoPrato);
+			atribuiAdicionais(adicionais);
+			atribuiFlagRetirado();
+		} catch (ExcecaoProdutoRetirado e) {
+			System.out.println(e);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 
 	public int retornaSenhaCliente() {
@@ -36,8 +44,11 @@ public class Pedido {
 		this._senhaCliente = count++;
 	}
 
-	public void atribuiTamanhoPrato(TamanhoPrato tamanhoPrato) {
-		this._tamanhoPrato = tamanhoPrato;
+	public void atribuiTamanhoPrato(TamanhoPrato tamanhoPrato) throws ExcecaoProdutoRetirado {
+		if (!this._retirado)
+			this._tamanhoPrato = tamanhoPrato;
+		else
+			throw new ExcecaoProdutoRetirado();
 	}
 
 	private void atribuiAdicionais(ArrayList<Adicional> adicionais) {
@@ -48,14 +59,18 @@ public class Pedido {
 		this._retirado = false;
 	}
 
-	public void acrecentaAdicional(Adicional adicional) {
+	public void acrecentaAdicional(Adicional adicional) throws ExcecaoProdutoRetirado {
 		if (!this._retirado)
 			this._adicionais.add(adicional);
+		else
+			throw new ExcecaoProdutoRetirado();
 	}
 
-	public void removeAdicional(Adicional adicional) {
+	public void removeAdicional(Adicional adicional) throws ExcecaoProdutoRetirado {
 		if (!this._retirado)
 			this._adicionais.remove(adicional);
+		else
+			throw new ExcecaoProdutoRetirado();
 	}
 
 	public void retirarPedido() {
