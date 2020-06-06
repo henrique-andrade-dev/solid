@@ -7,7 +7,7 @@ public enum Adicional {
 
 	REFRIGERANTE(5.9), O_CHA_VERDE(3.9), KO_CHA_PRETO(0);
 
-	private final double _preco;
+	private double _preco;
 
 	Adicional(double preco) {
 		_preco = preco;

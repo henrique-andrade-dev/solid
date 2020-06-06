@@ -1,29 +1,38 @@
 package application;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Main {
 	public static void main(String[] args) {
-		Adicional[] adicionais = { Adicional.BOI, Adicional.REFRIGERANTE };
+		ArrayList<Adicional> adicionais = new ArrayList<Adicional>();
+		adicionais.add(Adicional.BOI);
+		adicionais.add(Adicional.BOI);
+		adicionais.add(Adicional.REFRIGERANTE);
 
-		Pedido pedido = new Pedido(TamanhoPrato.MEDIO, Arrays.asList(adicionais));
-		Pedido pedido2 = new Pedido(TamanhoPrato.PEQUENO, Arrays.asList(adicionais));
+		Pedido pedido = new Pedido(TamanhoPrato.MEDIO, adicionais);		
+		pedido.removeAdicional(Adicional.BOI);
+		
+		ArrayList<Adicional> adicionais2 = new ArrayList<Adicional>();
+		adicionais2.add(Adicional.PORCO);
+		adicionais2.add(Adicional.KO_CHA_PRETO);
+		
+		Pedido pedido2 = new Pedido(TamanhoPrato.PEQUENO, adicionais2);		
+		pedido2.removeAdicional(Adicional.BOI);
 
-		Restaurante ichiranRamenShop = new Restaurante();
-
+		IchiranRamenShop ichiranRamenShop = new IchiranRamenShop();
 		ichiranRamenShop.adicionaPedido(pedido);
 		ichiranRamenShop.adicionaPedido(pedido2);
+		ichiranRamenShop.removePedido(pedido);
 
 		exibeDadosRestaurante(ichiranRamenShop);
-		// FALTA IMPLEMENTAR CLASSES DE ERRO
 	}
 	
-	static void exibeDadosRestaurante(Restaurante restaurante) {
+	static void exibeDadosRestaurante(IchiranRamenShop restaurante) {
 		exibePedidosRealizados(restaurante);
 		exibeBalancoFinal(restaurante);
 	}
 
-	static void exibePedidosRealizados(Restaurante restaurante) {
+	static void exibePedidosRealizados(IchiranRamenShop restaurante) {
 		System.out.println("Pedidos realizados:");
 
 		for (Pedido pedido : restaurante.retornaPedidosRealizados()) {
@@ -31,12 +40,12 @@ public class Main {
 			System.out.println("  Tamanho do prato: " + pedido.retornaTamanhoPrato());
 			System.out.println("  Adicionais: " + pedido.retornaListaAdicionais());
 			System.out.println("  Retirado: " + pedido.foiRetirado());
-			System.out.println("  Preço total: R$ " + pedido.retornaPrecoTotal());
+			System.out.println("  Preço total: R$ " + String.format("%,.2f", pedido.retornaPrecoTotal()));
 		}
 	}
 
-	static void exibeBalancoFinal(Restaurante restaurante) {
+	static void exibeBalancoFinal(IchiranRamenShop restaurante) {
 		System.out.println("\r\n--");
-		System.out.println("\r\nBalanço final: R$ " + restaurante.retornaBalancoFinal());
+		System.out.println("\r\nBalanço final: R$ " + String.format("%,.2f", restaurante.retornaBalancoFinal()));
 	}
 }
