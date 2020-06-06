@@ -59,7 +59,7 @@ public class Pedido {
 		this._retirado = false;
 	}
 
-	public void acrecentaAdicional(Adicional adicional) throws ExcecaoProdutoRetirado {
+	public void acrescentaAdicional(Adicional adicional) throws ExcecaoProdutoRetirado {
 		if (!this._retirado)
 			this._adicionais.add(adicional);
 		else

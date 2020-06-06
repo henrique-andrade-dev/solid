@@ -13,6 +13,7 @@ public class Main {
 		adicionais.add(Adicional.REFRIGERANTE);
 
 		Pedido pedido = new Pedido(TamanhoPrato.MEDIO, adicionais);
+		pedido.acrescentaAdicional(Adicional.CREME_ALHO);
 		pedido.removeAdicional(Adicional.BOI);
 
 		ArrayList<Adicional> adicionais2 = new ArrayList<Adicional>();
@@ -25,7 +26,7 @@ public class Main {
 		IchiranRamenShop ichiranRamenShop = IchiranRamenShop.getInstance();
 		ichiranRamenShop.adicionaPedido(pedido);
 		ichiranRamenShop.adicionaPedido(pedido2);
-		ichiranRamenShop.removePedido(pedido);
+		//ichiranRamenShop.removePedido(pedido);
 
 		exibeDadosRestaurante(ichiranRamenShop);
 	}
