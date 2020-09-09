@@ -4,6 +4,6 @@ public class ExcecaoProdutoRetirado extends Exception {
 	private static final long serialVersionUID = 1L;
 
 	public ExcecaoProdutoRetirado() {
-		super("N„o È mais possÌvel fazer qualquer tipo de alteraÁ„o neste pedido, pois o produto j· foi retirado.");
+		super("N√£o √© mais poss√≠vel fazer qualquer tipo de altera√ß√£o neste pedido, pois o produto j√° foi retirado.");
 	}
 }
